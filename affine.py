@@ -11,10 +11,11 @@ def affine_encrypt(msg, a, b):
 
 def affine_decrypt(msg, a, b):
 	result = ''
+	(r, s, t) = extended_gcd(26, a)
+	t = t % 26
 	for text in msg:
 		index = letters.find(text)
-		(r, s, t) = extended_gcd(26, a)
-		result += letters[(t % 26) * (index - b) % 26]
+		result += letters[(t * (index - b)) % 26]
 	return result
 
 if __name__ == '__main__':
