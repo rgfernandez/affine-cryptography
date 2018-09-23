@@ -18,16 +18,16 @@ def affine_decrypt(msg, a, b):
 	return result
 
 if __name__ == '__main__':
-	resp = input('[E]ncrypt or [D]ecrypt? ')
+	resp = input('[E]ncrypt or [D]ecrypt? ').upper()
 	if resp not in ('E', 'D'):
 		print('Not recognized')
 
-	msg = input('Type message: ')
+	msg = input('Type message: ').upper()
 	a = int(input('Type a: '))
 	b = int(input('Type b: '))
 
 	if resp == 'E':
-		print(affine_encrypt(msg.upper(), a, b))
+		print(affine_encrypt(msg, a, b))
 	else:
-		print(affine_decrypt(msg.upper(), a, b))
+		print(affine_decrypt(msg, a, b))
 	
