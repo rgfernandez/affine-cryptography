@@ -21,11 +21,10 @@ def affine_decrypt(msg, a, b):
 if __name__ == '__main__':
 	resp = input('[E]ncrypt or [D]ecrypt? ').upper()
 	if resp not in ('E', 'D'):
-		print('Not recognized')
+		print('Mode not recognized. Please run code again.')
 
+	(a, b) = tuple(int(n.strip().strip('(').strip(').strip()')) for n in input('Type key (a,b): ').split(','))
 	msg = input('Type message: ').upper()
-	a = int(input('Type a: '))
-	b = int(input('Type b: '))
 
 	if resp == 'E':
 		print(affine_encrypt(msg, a, b))
