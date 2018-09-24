@@ -1,3 +1,4 @@
+import sys
 from extended_euclidean import extended_gcd
 
 letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -22,9 +23,13 @@ if __name__ == '__main__':
 	resp = input('[E]ncrypt or [D]ecrypt? ').upper()
 	if resp not in ('E', 'D'):
 		print('Mode not recognized. Please run code again.')
+		sys.exit(1)
 
 	(a, b) = tuple(int(n.strip().strip('(').strip(').strip()')) for n in input('Type key (a,b): ').split(','))
 	msg = input('Type message: ').upper()
+	if (False in [y in letters for y in msg]):
+		print('Does not support special character in message. Please run code again.')
+		sys.exit(1)
 
 	if resp == 'E':
 		print(affine_encrypt(msg, a, b))
