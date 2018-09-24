@@ -23,8 +23,11 @@ def extended_gcd(a, b):
 		d = r
 
 if __name__ == '__main__':
-	a = input('Enter first number: ')
-	b = input('Enter second number: ')
+	a = int(input('Enter first number: '))
+	b = int(input('Enter second number: '))
 
-	(c, d, e) = extended_gcd(int(a), int(b))
+	if (a < b):
+		(a, b) = (b, a)
+
+	(c, d, e) = extended_gcd(a, b)
 	print(f'The GCD of {a} and {b} is {c}. The solution to {a}*x+{b}*y={c} is ({d},{e})')
